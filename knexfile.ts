@@ -14,8 +14,6 @@ const connection: Knex.ConnectionConfig = {
   database: process.env.PGDATABASE,
 };
 
-console.log('connection in DBBB',connection)
-
 const commonConfig: Knex.Config = {
   client: 'pg',
   connection,
