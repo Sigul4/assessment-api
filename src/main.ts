@@ -7,8 +7,9 @@ dotenv.config();
 declare const module: any;
 
 async function bootstrap() {
+  console.log('bootstraped')
   const app = await NestFactory.create(AppModule);
-
+  
   app.enableCors({
     origin: [
       'http://localhost:4200',
@@ -17,8 +18,9 @@ async function bootstrap() {
     methods: ["GET", "POST"],
     credentials: true,
   });
-
+  
   await app.listen(3000);
+  console.log('bootstraped on 3000')
 
   if (module.hot) {
     module.hot.accept();
