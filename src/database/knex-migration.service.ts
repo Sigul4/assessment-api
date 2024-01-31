@@ -11,7 +11,17 @@ export class MigrationService {
     this.knexInstance = Knex(knexConfig['development']);
   }
 
-  async runMigrations(): Promise<void> {
+  async showConnection(): Promise<void> {
+    try {
+      const connectionConfig = this.knexInstance.client.config;
+      console.log('Connection Configuration:', connectionConfig);
+    } catch (error) {
+      console.error('connection error', error);
+      throw error;
+    }
+  }
+
+  async runAllMigrations(): Promise<void> {
     try {
       await this.knexInstance.migrate.latest();
     } catch (error) {

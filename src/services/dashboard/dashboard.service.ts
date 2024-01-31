@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { knexInstance } from 'db';
 
-import { handleErrors } from 'src/utils/error-heandlers/db.request.error.handler';
 import { ASSESSMENTS_TABLE_NAME, USER_ASSESSMENTS_TABLE_NAME } from 'src/database/constants/tables.constant';
 import { FAILED_GET_ASSESSMENT, FAILED_GET_USER_ASSESSMENT } from 'src/shared/constants/response.errors.constant';
 import { AssessmentData } from 'src/shared/interfaces/assessment.interface';
 import { UserAssessmentData } from 'src/shared/interfaces/user-assessment.interface';
+import { handleErrors } from 'src/utils/error-heandlers/db.request.error.handler';
 
 @Injectable()
 export class DashboardService {  
@@ -16,7 +16,7 @@ export class DashboardService {
     );
     return userAssessments;
   }
-
+  
   async getAssessmentGraph(assessmentId: number) {
     const assessmentData = await handleErrors(
         knexInstance<UserAssessmentData>(USER_ASSESSMENTS_TABLE_NAME).select('*').where('assessment_id', assessmentId).first(),
