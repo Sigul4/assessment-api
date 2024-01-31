@@ -2,6 +2,9 @@ build:
   docker:
     web: Dockerfile
 
+run:
+  web: npm run dev
+
 stack: container
 
 services:
@@ -35,26 +38,6 @@ services:
       - '3031:80'
     volumes:
       - pgadmin-data:/var/lib/pgadmin
-
-  - name: nodeback
-    image: nodeback
-    restart: always
-    environment:
-      TZ: Europe/Kiev
-      NODE_ENV: development
-      DB_HOST: database
-      DB_PORT: 5432
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-      DB_NAME: postgres
-    depends_on:
-      - database
-    command: sh -c "npm install --force && npm run dev"
-    volumes:
-      - ./log:/usr/src/app/log
-      - .:/usr/src/app
-    ports:
-      - 3000:3000
 
 volumes:
   database:
