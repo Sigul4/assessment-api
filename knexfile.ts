@@ -18,10 +18,10 @@ const commonConfig: Knex.Config = {
   client: 'pg',
   connection,
   migrations: {
-    directory: process.env.MIGRATIONS_DIR || './src/database/migrations',
+    directory: process.env.MIGRATIONS_DIR || 'src/database/migrations',
   },
   seeds: {
-    directory: process.env.SEEDS_DIR || './src/database/seeds',
+    directory: process.env.SEEDS_DIR || 'src/database/seeds',
   },
 };
 

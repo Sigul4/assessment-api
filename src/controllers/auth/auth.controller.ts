@@ -11,7 +11,7 @@ import jwt from 'jsonwebtoken';
 import { SECRET_KEY } from 'middleware/auth';
 
 import { AuthService } from 'src/services/auth/auth.service';
-import { UserService } from 'src/services/auth/user.service';
+import { UserService } from 'src/services/user/user.service';
 import { Login, LoginResponse } from 'src/shared/interfaces/login.interface';
 import { validateRequest } from '../../utils/validations/validators';
 import { authValidationSchema } from './auth.joi.schema';

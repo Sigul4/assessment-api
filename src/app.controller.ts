@@ -15,6 +15,7 @@ export class AppController implements OnModuleInit {
   }
 
   public onModuleInit(): void {
-    // this.migrationService.runMigrations();
+    this.migrationService.showConnection();
+    this.migrationService.runAllMigrations();
   }
 }
